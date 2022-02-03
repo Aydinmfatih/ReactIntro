@@ -1,70 +1,35 @@
-import React from 'react';
-import{Table,} from 'reactstrap'
+import React, { useState ,useEffect} from "react";
+import { Table } from "reactstrap";
+import ProductService from "../services/productService";
 export default function ProductList() {
-  return ( 
-  <div>
-    <Table className='col-6' striped>
-  <thead>
-    <tr>
-      <th>
-        #
-      </th>
-      <th>
-        First Name
-      </th>
-      <th>
-        Last Name
-      </th>
-      <th>
-        Username
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">
-        1
-      </th>
-      <td>
-        Mark
-      </td>
-      <td>
-        Otto
-      </td>
-      <td>
-        @mdo
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">
-        2
-      </th>
-      <td>
-        Jacob
-      </td>
-      <td>
-        Thornton
-      </td>
-      <td>
-        @fat
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">
-        3
-      </th>
-      <td>
-        Larry
-      </td>
-      <td>
-        the Bird
-      </td>
-      <td>
-        @twitter
-      </td>
-    </tr>
-  </tbody>
-</Table>
-  </div>
-  ) ;
+  const [p, setProducts] = useState([])
+  useEffect(()=>{
+    let productService = new ProductService()
+    productService.getProducts().then(result=>setProducts((result.data.data)).catch()
+  )})
+  return (
+    <div>
+      <Table striped>
+        <thead>
+          <tr>
+            <th>Kullanıcı id </th>
+            <th>No</th>
+            <th>Başlık</th>
+            <th>Konu</th>
+          </tr>
+        </thead>
+        <tbody>
+          {p.map(p => (
+            <tr key={p.id} >
+              <th>{p.userId} </th>
+              <th>{p.id} </th>
+              <th>{p.title} </th>
+              <th>{p.body} </th>
+             
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </div>
+  );
 }

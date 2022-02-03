@@ -7,9 +7,17 @@ export default class Dashboard extends Component {
   render() {
     return (
     <div>
-        <Navi/>
-      <Categories/>
-      <ProductList/>
+       <Navi/>
+       <div className="row">
+         <div className="col-3">
+           <Categories/>
+         </div>
+         <div className="col-9">
+            <ProductList/>
+         </div>
+       </div>
+     
+     
     </div>
     ) ;
   }
