@@ -6,10 +6,13 @@ import ProductService from "../services/productService";
 export default function ProductList() {
   const [products, setProducts] = useState([]);
 
-  useEffect(async () => {
+  useEffect(() => {
+   async fetchData = ()=> {
     const productService = new ProductService();
     const productsResult = await productService.getProducts();
     setProducts(productsResult.data.data);
+   }
+   fetchData();
   }, []);
 
   return (
