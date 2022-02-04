@@ -10,7 +10,7 @@ export default function ProductList() {
    async fetchData = ()=> {
     const productService = new ProductService();
     const productsResult = await productService.getProducts();
-    setProducts(productsResult.data.data);
+    setProducts(productsResult.data);
    }
    fetchData();
   }, []);
