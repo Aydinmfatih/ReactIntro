@@ -2,14 +2,14 @@
 import React, { useState ,useEffect} from "react";
 import { Table } from "reactstrap";
 import ProductService from "../services/productService";
+
 export default function ProductList() {
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    let productService = new ProductService();
-    productService
-      .getProducts()
-      .then((result) => setProducts(result.data.data));
+  useEffect(async () => {
+    const productService = new ProductService();
+    const productsResult = await productService.getProducts();
+    setProducts(productsResult.data.data);
   }, []);
 
   return (
