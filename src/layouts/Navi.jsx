@@ -9,36 +9,41 @@ import {
   NavLink,
   Nav,
   UncontrolledDropdown,
+ 
   
-  NavbarText,
 } from "reactstrap";
-
+import SignedIn from "./SignedIn";
+import SignedOut from "./SignedOut";
 export default function Navi() {
   return (
     <div>
-      
-      
-        <Navbar container color="light" expand="md" light>
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
-          <NavbarToggler onClick={function noRefCheck() {}} />
-          <Collapse navbar>
-            <Nav className="me-auto" navbar>
-              <NavItem>
-                <NavLink href="/components/">Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
-                  GitHub
-                </NavLink>
-              </NavItem>
-              <UncontrolledDropdown inNavbar nav>
-                <CartSummary></CartSummary>
-              </UncontrolledDropdown>
-            </Nav>
-            <NavbarText>Simple Text</NavbarText>
-          </Collapse>
-        </Navbar>
-      
+       <div className="row">
+      <Navbar container color="light" expand="md" light>
+        <NavbarBrand href="/">reactstrap</NavbarBrand>
+        <NavbarToggler onClick={function noRefCheck() {}} />
+        <Collapse navbar>
+          <Nav className="me-auto" navbar>
+            <NavItem>
+              <NavLink href="/components/">Components</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://github.com/reactstrap/reactstrap">
+                GitHub
+              </NavLink>
+            </NavItem>
+            <UncontrolledDropdown inNavbar nav>
+              <CartSummary></CartSummary>
+            </UncontrolledDropdown>
+          </Nav>
+        
+              
+             <SignedIn/> 
+             <SignedOut/>
+           
+            
+        </Collapse>
+      </Navbar>
+      </div>
     </div>
   );
 }

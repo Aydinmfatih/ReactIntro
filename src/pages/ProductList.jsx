@@ -1,19 +1,22 @@
-
 import React, { useState ,useEffect} from "react";
 import { Table } from "reactstrap";
 import ProductService from "../services/productService";
+
 export default function ProductList() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    let productService = new ProductService();
-    productService
-      .getProducts()
-      .then((result) => setProducts(result.data.data));
+    const fetchData = async () =>  {
+    const productService = new ProductService();
+    const productsResult = await productService.getProducts();
+    setProducts(productsResult.data);
+   }
+   fetchData();
   }, []);
 
   return (
     <div>
+      
         
       <Table striped>
         <thead>
@@ -28,7 +31,7 @@ export default function ProductList() {
         <tbody> 
         {products?.map((p) => (
             <tr key={p.id} >
-              <td>{p.postId} </td>
+              <td>{p.postId} </td> 
               <td>{p.id} </td>
               <td>{p.name} </td>
               <td>{p.email} </td>

@@ -5,3 +5,11 @@
 .ui.main.container{
   margin-top:3em;
 }
+
+
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
