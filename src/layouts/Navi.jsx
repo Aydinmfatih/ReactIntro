@@ -15,8 +15,11 @@ import SignedOut from "./SignedOut";
 export default function Navi() {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
-  function handleSignOut(params) {
-    setIsAuthenticated(false)
+  function handleSignOut() {
+    setIsAuthenticated(false);
+  }
+  function handleSignIn() {
+    setIsAuthenticated(true);
   }
   return (
     <div>
@@ -38,7 +41,7 @@ export default function Navi() {
                 <CartSummary></CartSummary>
               </UncontrolledDropdown>
             </Nav>
-            {isAuthenticated ? <SignedIn SignedOut={handleSignOut()} /> : <SignedOut />}
+            {isAuthenticated? <SignedIn signOut={handleSignOut} /> : <SignedOut SignIn={handleSignIn} />}
           </Collapse>
         </Navbar>
       </div>
