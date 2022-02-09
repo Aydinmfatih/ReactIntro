@@ -37,10 +37,11 @@ export default function Navi() {
                   GitHub
                 </NavLink>
               </NavItem>
-              <UncontrolledDropdown inNavbar nav>
+              
+            </Nav>
+            <UncontrolledDropdown inNavbar Nav>
                 <CartSummary></CartSummary>
               </UncontrolledDropdown>
-            </Nav>
             {isAuthenticated? <SignedIn signOut={handleSignOut} /> : <SignedOut SignIn={handleSignIn} />}
           </Collapse>
         </Navbar>
